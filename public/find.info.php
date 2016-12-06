@@ -3,7 +3,7 @@
 
 <?php
 
-$conn = mysql_connect("localhost", "root", "root", "project1");
+$conn = mysql_connect('localhost', 'root', 'root', 'project1');
 
 if (!$conn) {
   die("Connection failed: ".$conn->error);
@@ -26,6 +26,7 @@ echo "<table border = '1'>
 <th> States Visited </th>
 </tr>";
 
+//outputs the information wanted in the table
 while($row = mysql_fetch_array($result))
 {
   echo "<tr>";
@@ -38,12 +39,6 @@ while($row = mysql_fetch_array($result))
 echo "</table>";
 ?>
 
-
-<p>
-<form action = 'add.visit.php' method = 'post'>
-  <input type = 'submit' value = 'Add a new state' class = 'button'/>
-</form>
-</p>
 
 <p>
 <form action = 'index.php' method = 'post'>

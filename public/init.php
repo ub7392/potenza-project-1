@@ -1,9 +1,9 @@
 <?php
 
-$host = "localhost";
-$username = "root";
-$password = "root";
-$database = "project1";
+$host = 'localhost';
+$username = 'root';
+$password = 'root';
+$database = 'project1';
 
 $conn = mysql_connect($host, $username, $password);
 
