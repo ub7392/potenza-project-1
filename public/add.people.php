@@ -1,4 +1,4 @@
-<p><body><b>Add a new person</b></body></p>
+<p><body><b>Add a New Person</b></body></p>
 <form method="post" action= "">
   <p>
     <label>First Name: </label>
@@ -17,6 +17,7 @@
 
 <?php
 $conn = mysql_connect('localhost', 'root', 'root', 'project1');
+mysql_select_db('project1');
 
 if (!$conn) {
   die("Connection failed: ".$conn->error);
@@ -34,7 +35,7 @@ $sql = "INSERT INTO people
 
 if (isset($_POST['submit'])){
   if(mysql_query($sql)){
-      echo("State added!");
+      echo("Person added added!");
   }else{
       echo("Error adding state: ".mysql_error());
   }

@@ -46,20 +46,25 @@ $states = "CREATE TABLE if not exists states
             state_abbreviation  varchar(255)
           )";
 
-/*$addstates = "INSERT INTO states
-              (id, state_name, state_abbreviation)
-              values(NULL, 'Louisiana', 'LA'),
-                    (NULL, 'Texas', 'TX'),
-                    (NULL, 'Alabama', 'AL'),
-                    (NULL, 'Mississippi', 'MS'),
-                    (NULL, 'Florida', 'FL'),
-                    (NULL, 'California', 'CA'),
-                    (NULL, 'New York', 'NY'),
-                    (NULL, 'Colorado', 'CO'),
-                    (NULL, 'Utah', 'UT'),
-                    (NULL, 'Tennessee', 'TN')";*/
+$check = mysql_query("SELECT * FROM states");
+$num = mysql_fetch_array($check);
 
-mysql_query($addstates);
+if(!$num){
+  $addstates = "INSERT INTO states
+                (id, state_name, state_abbreviation)
+                values(NULL, 'Louisiana', 'LA'),
+                      (NULL, 'Texas', 'TX'),
+                      (NULL, 'Alabama', 'AL'),
+                      (NULL, 'Mississippi', 'MS'),
+                      (NULL, 'Florida', 'FL'),
+                      (NULL, 'California', 'CA'),
+                      (NULL, 'New York', 'NY'),
+                      (NULL, 'Colorado', 'CO'),
+                      (NULL, 'Utah', 'UT'),
+                      (NULL, 'Tennessee', 'TN')";
+
+  mysql_query($addstates);
+}
 
 if(mysql_query($states) === TRUE)
 {
@@ -71,10 +76,8 @@ if(mysql_query($states) === TRUE)
 $visits = "CREATE TABLE if not exists visits
            (id  int NOT NULL PRIMARY KEY AUTO_INCREMENT,
             person_id  int,
-            state_id  int,
-            FOREIGN KEY (person_id) REFERENCES people(id),
-            FOREIGN KEY (state_id) REFERENCES states(id)
-          );";
+            state_id  int
+          )";
 
 if(mysql_query($visits) === TRUE)
 {
